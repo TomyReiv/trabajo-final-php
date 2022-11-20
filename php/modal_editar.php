@@ -22,8 +22,8 @@
                     $id = $_GET['id'];/* el id se lo damos en habilitaciones.php */
                     $consulta = "SELECT * FROM hoja4 WHERE id = '$id'";/* igual que en la busqueda pero se usa el numero de id para seleccionar los datos especificos */
 
-                    $resultado = mysqli_query($conexion, $consulta);
-                    $hab = mysqli_fetch_array($resultado);
+                    $resultModal = mysqli_query($conexion, $consulta);
+                    $hab = mysqli_fetch_array($resultModal);
 
 
                     ?>

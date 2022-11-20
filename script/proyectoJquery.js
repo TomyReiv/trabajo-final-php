@@ -1,10 +1,8 @@
 
-
 $(document).ready(function () {
-
     function mostrarErrorUs() {
         const errorUs = document.createElement('P');
-        errorUs.textContent = '*Nombre de usuario ya esta registrado';
+        errorUs.textContent = '*Nombre de usuario incorrecto';
         errorUs.classList.add('error');
         const errorUsuario = document.querySelector(".error--usuario").appendChild(errorUs);
         const usuario2 = document.querySelector(".usuario").classList.add('error2');
@@ -12,7 +10,20 @@ $(document).ready(function () {
         setTimeout(() => {
             errorUs.remove();
             const usuario2 = document.querySelector(".usuario").classList.remove('error2');
-        }, 5000);
+        }, 10000);
+    }
+
+    function mostrarErrorCon() {
+        const errorCon = document.createElement('P');
+        errorCon.textContent = '*Contraseña incorrecta';
+        errorCon.classList.add('error');
+        const errorContraseña = document.querySelector(".error--contraseña").appendChild(errorCon);
+        const contraseña2 = document.querySelector(".contraseña").classList.add('error2');
+
+        setTimeout(() => {
+            errorCon.remove();
+            const contraseña2 = document.querySelector(".contraseña").classList.remove('error2');
+        }, 10000);
     }
 
     function captcha() {
@@ -59,15 +70,22 @@ $(document).ready(function () {
                 async: true,
                 data: $('.formulario').serialize(),
                 success: function (resp) {
-                    if(resp == "Correcto"){
-                        window.location.href = "habilitaciones.php";
-                    }else{
-                        if(resp == "Incorrecto"){
-                            alert('Error de sistema');
-                        }else{
+                    console.log(resp);
+
+                    if (resp == 'error') {
+                        alert('Error del sistema');
+
+                    } else {
+                        let data = JSON.parse(resp);
+                        if (usuario != data.usuario) {
                             mostrarErrorUs();
+                        } else {
+                            if (contraseña != data.contraseña) {
+                                mostrarErrorCon();
+                            } else {
+                                window.location.href = "habilitaciones.php";
+                            }
                         }
-                        
                     }
 
                 },

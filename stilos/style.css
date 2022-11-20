@@ -92,7 +92,7 @@ form{
     font-size: 2rem;
     color: var(--dark);
     margin: 7px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 label{
     font-size: 2.5rem;
@@ -192,3 +192,6 @@ label{
     padding: 1rem;
     font-size: 1.5rem;
   }
+.cont-C{
+    display: inline;
+}

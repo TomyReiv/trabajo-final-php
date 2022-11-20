@@ -1,4 +1,4 @@
-.cont--nav{
+.cont--nav {
     display: flex;
     justify-content: space-between;
     position: fixed;
@@ -7,43 +7,53 @@
     padding: 7px;
     background-color: #15832e;
 }
-.cont--nav a{
+
+.cont--nav a {
     color: white;
 }
-.table-responsive{
+
+.table-responsive {
     overflow: scroll;
     max-height: 40rem;
 }
-.fecha{
+
+.fecha {
     font-size: 1rem;
     color: white;
     font-weight: 700;
 }
-.cont-prin{
+
+.cont-prin {
     margin-top: 5rem;
 }
-.btn-logout{
+
+.btn-logout {
     padding: 3px 15px 3px 15px;
     text-decoration: none;
     text-align: right;
     background-color: #b80808;
     color: white;
 }
-.btn-logout:hover{
+
+.btn-logout:hover {
     background-color: #490b0e;
     color: white;
 }
-.titulo{
+
+.titulo {
     margin-top: 2rem;
 }
-.table{
+
+.table {
     border: 1px solid black;
 }
-.contenedor{
+
+.contenedor {
     width: 50%;
     margin: auto;
 }
-.cont--form{
+
+.cont--form {
     width: 50%;
     margin: auto;
     display: grid;
@@ -52,66 +62,90 @@
 }
 
 
-.btn-block{
+.btn-block {
     grid-column: 1/3;
     grid-row: 6;
 }
 
-.registrar{
-   text-align: center;
+.registrar {
+    text-align: center;
 }
 
-.btn{
+.btn {
     background-color: #15832e;
     color: white;
     border-radius: 10px;
 }
-.btn:hover{
+
+.btn:hover {
     background-color: #106624;
     color: white;
 }
-.table{
+
+.table {
     overflow: scroll;
     height: 10rem;
 }
 
 
-@media (max-width: 980px){
-    body{
+@media (max-width: 980px) {
+    body {
         width: 100%;
     }
-    .conteiner .contenedor{
+
+    .conteiner .contenedor {
         width: 100%;
     }
-    .cont--form{
+
+    .cont--form {
         display: flex;
         flex-direction: column;
         width: 90%;
     }
-    .input input{
+
+    .input input {
         width: 100%;
     }
-    .rubros{
+
+    .rubros {
         max-width: 90%;
     }
-    .derivar{
+
+    .derivar {
         width: 90%;
     }
-    .cont--nav{
+
+    .cont--nav {
         flex-direction: column;
         align-items: center;
     }
-    .cont--nav{
+
+    .cont--nav {
         position: static;
     }
-    .cont-prin{
+
+    .cont-prin {
         margin-top: 0;
     }
-    .btn-logout{
+
+    .btn-logout {
         background-color: inherit;
         color: #b80808;
     }
-    .fecha{
-        visibility: hidden;
-    }
+
+}
+
+.mobile-menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 1rem;
+}
+
+.mobile-menu,
+img {
+    margin: auto;
+    width: 2rem;
+    height: 2rem;
+
 }

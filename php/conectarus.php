@@ -16,14 +16,14 @@ if(!empty($_POST['usuario'])){
 
         if($query){
             
-            header("location:../index.php");
+            echo "Correcto";
 
         }else{
-            header("location:../registrar.php?infoUS=incorrecto");
+            echo "Incorrecto";
         
         }
     }else{
-        header("location:../registro.php?infoUS=incorrecto");
+        echo "Sistema";
         }
 }else{
     header("location:../index.php");

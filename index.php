@@ -32,7 +32,7 @@ include 'php/fecha.php';
             <label for="contraseña">Contraseña:</label>
             <input type="password" name="contraseña" id="contraseña" class="contraseña input" placeholder="Contraseña">
             <div class="error--contraseña"></div>
-            <label for="capchat">Complete el captcha: <div class="cont--cap"></div></label>
+            <label for="capchat">Complete el captcha: <div class="cont-C"><img src="refresh.png" alt="refresh" width="60" height="60" id="refresh"><span class="cont--cap"></span></div></label>
             <input type="text" id="captchaInicial" class="captchaInicial input" placeholder="Captcha">
             <div class="error--capt"></div>
 
@@ -44,21 +44,13 @@ include 'php/fecha.php';
     </div>
 
 
-    <?php
-
-    if (isset($_GET['CONTRASEÑA'])) {
-        echo '<script src="script/errorContraseña.js"></script>';
-    }
-    if (isset($_GET['USUARIO'])) {
-        echo '<script src="script/errorUsuario.js"></script>';
-    }
-
-    ?>
-
-    <script src="script/proyecto.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="script/proyectoJquery.js"></script>
     <script src="script/portada.js"></script>
- 
-   
+    <script src="script/reCaptcha.js"></script>
+
+
 </body>
 
 </html>

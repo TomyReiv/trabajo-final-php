@@ -30,7 +30,7 @@ include 'php/fecha.php';
             <label for="contraseña">Confirmar contraseña:</label>
             <input type="password" name="contraseña2" id="contraseña2" class="contraseña2 input" placeholder="Confirmar contraseña" autocomplete="off">
             <div class="error--contraseña2"></div>
-            <label for="capchat">Complete el captcha: <div class="cont--cap"></div></label>
+            <label for="capchat">Complete el captcha: <div class="cont-C"><img src="refresh.png" alt="refresh" width="60" height="60" id="refresh"><span class="cont--cap"></span></div></label>
             <input type="text" id="captchaInicial" class="captchaInicial input" placeholder="Captcha">
             <div class="error--capt"></div>
 
@@ -43,19 +43,13 @@ include 'php/fecha.php';
         
     </div>
 
-
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="script/errorUsuarioRegistro.js"></script>
     <script src="script/confirPass.js"></script>
-    <script src="script/proyecto.js"></script>
+    <script src="script/reCaptcha.js"></script>
 
-   
-<?php
-    if(isset($_GET['INFORMACION'])){
-        echo '<script src="script/errorUsuarioRegistro.js"></script>';
-    }
-    if(isset($_GET['INFORMACION2']))
-    echo "<p class='error'>Error en la carga de datos</p>";
 
-?>
 <?php
 include 'php/alertas.php';
 ?>
