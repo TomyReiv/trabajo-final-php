@@ -1,33 +1,44 @@
 <?php
 include 'sesionPhp.php';
-if (!empty($_POST['numero'])) {
+if (!empty($_GET['numero'])) {
     include 'cn.php';
 
 
-    $numero = $_POST['numero'];
-    $razon = $_POST['razonsocial'];
-    $control = $_POST['control0'];
-    $firma = $_POST['firma'];
-    $rubros = $_POST['rubro'];
-    $fecha = $_POST['fecha'];
-    $acta = $_POST['acta'];
-    $patente = $_POST['patente'];
-    $control2 = $_POST['control2'];
+    $numero = $_GET['numero'];
+    $razon = $_GET['razonsocial'];
+    $control = $_GET['control0'];
+    $firma = $_GET['firma'];
+    $rubros = $_GET['rubro'];
+    $fecha = $_GET['fecha'];
+    $acta = $_GET['acta'];
+    $patente = $_GET['patente'];
+    $control2 = $_GET['control2'];
 
 
 
 
-    $insertar = "INSERT INTO `hoja4`( `numero`, `R.social`, `C.inicial`, `firma`, `rubros`, `fecha`, `acta`, `patente`, `control2`) VALUES ('$numero','$razon','$control','$firma','$rubros','$fecha','$acta','$patente','$control2')";
-    /* $insertar = "INSERT INTO hoja4 (numero, R.social, C.inicial, firma, rubros, fecha, acta, patente, control2) VALUES ('$numero', '$razon', '$control', '$firma', '$rubros', '$fecha', '$acta', '$patente', '$control2')"; */
+    $insertar = "INSERT INTO `hoja4`( `numero`, `R_social`, `C_inicial`, `firma`, `rubros`, `fecha`, `acta`, `patente`, `control2`) VALUES ('$numero','$razon','$control','$firma','$rubros','$fecha','$acta','$patente','$control2')";
     $query = mysqli_query($conexion, $insertar);
 
+
     if ($query) {
+      
 
-        header("location:../habilitaciones.php?DATO=correcto");
-    } else {
+        $sql_select = "SELECT * FROM `hoja4` ORDER BY id DESC LIMIT 1";
+        $query2 = mysqli_query($conexion, $sql_select);
 
-        header("location:../habilitaciones.php?DATO=incorrecto");
+        $filas = mysqli_num_rows($query2);
+
+        if ($filas === 0) {
+            echo 'error';
+            exit();
+        } else {
+            $datos = mysqli_fetch_assoc($query2);
+            echo json_encode($datos, JSON_UNESCAPED_UNICODE);
+            exit();
+        } 
     }
 } else {
+
     header("location:../habilitaciones.php?DATO=VACIO");
-}
+} header("location:../index.php?AUTORIZACION=INCORRECTO_SESION");

@@ -55,7 +55,7 @@ $resultado = mysqli_query($conexion, $consulta);
             <h4 class="text-center titulo">Carga de habilitaciones</h4>
         </div><!-- div tit -->
         <br>
-        <form action="php/conectarhab.php" method="post" class="input">
+        <form action="php/conectarhab.php" method="post" class="input" id="form">
             <div class="cont--form">
                 <div class="columna-1 input">
                     <input type="text" name="numero" class="form-control input" placeholder="Habilitacion">
@@ -116,7 +116,7 @@ $resultado = mysqli_query($conexion, $consulta);
                         <option value="Transporte escolar">Transporte escolar</option>
                     </select>
                 </div>
-                <input type="submit" value="Cargar" name="cargar" class="btn-block btn-sm btn-success">
+                <input type="submit" value="Cargar" name="cargar" id="btn-carga" class="btn-block btn-sm btn-success">
             </div><!-- fin div cont fomr -->
 
             <?php
@@ -154,14 +154,15 @@ $resultado = mysqli_query($conexion, $consulta);
                                     <th>Control de frio/Constataciones</th>
                                     <th>Operaciones</th>
                                 </thead>
-                                <tbody class="cuerpo">
+                                <tbody class="cuerpo" id="table">
                                     <?php while ($row = mysqli_fetch_array($resultado)) {
                                         include 'php/modal_editar.php';   ?>
                                         <!-- asociar las filas de la base de datos con la tabla q sea crea aca -->
                                         <tr>
+
                                             <td><?php echo $row['numero']; ?></td>
-                                            <td><?php echo $row['R.social']; ?></td>
-                                            <td><?php echo $row['C.inicial']; ?></td>
+                                            <td><?php echo $row['R_social']; ?></td>
+                                            <td><?php echo $row['C_inicial']; ?></td>
                                             <td><?php echo $row['firma']; ?></td>
                                             <td><?php echo $row['rubros']; ?></td>
                                             <td><?php echo $row['fecha']; ?></td>
@@ -170,7 +171,7 @@ $resultado = mysqli_query($conexion, $consulta);
                                             <td><?php echo $row['control2']; ?></td>
                                             <td>
 
-                                                <button type="button" data-toggle="modal" style="border: none" data-target="#modal_editar<?php echo $fila['id'];  ?>">
+                                                <button type="button" data-toggle="modal" style="border: none" data-target="#modal_editar<?php echo $row['id'];  ?>">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" style="color: #15832e" viewBox="0 0 16 16">
                                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
@@ -183,7 +184,33 @@ $resultado = mysqli_query($conexion, $consulta);
                                                 </button>
                                             </td>
                                         </tr>
+                                        <?php include 'php/modal_editar2.php'; ?>
                                     <?php } ?>
+                                    <tr id="table_JS">
+                                        <td hidden id="id"></td>
+                                        <td id="numero"></td>
+                                        <td id="R_social"></td>
+                                        <td id="C_inicial"></td>
+                                        <td id="firma"></td>
+                                        <td id="rubros"></td>
+                                        <td id="fecha"></td>
+                                        <td id="acta"></td>
+                                        <td id="patente"></td>
+                                        <td id="control2"></td>
+                                        <td>
+                                            <button type="button" data-toggle="modal" id="editar" style="border: none" data-target="#modal_editar">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" style="color: #15832e" viewBox="0 0 16 16">
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                </svg>
+                                            </button>
+                                            <button style="border: none" style="color: white" id="eliminar" onclick="alerta2()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" style="color: #b80808" viewBox="0 0 16 16">
+                                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                                </svg>
+                                            </button>
+                                    </tr>
+
                                 </tbody>
                             </table>
                         <?php } else { ?>
@@ -205,7 +232,7 @@ $resultado = mysqli_query($conexion, $consulta);
     <script src="script/responsive.js"></script>
     <script src="script/modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-    
+
 </body>
 
 </html>

@@ -17,7 +17,7 @@ $control2 = $_POST['control2'];
 
 //actualizar datos
 
-$actualizar = "UPDATE `hoja4` SET `numero` = '$numero', `R.social` = '$razon', `C.inicial` = '$control', `firma` = '$firma', `rubros` = '$rubros', `fecha` = '$fecha', `acta` = '$acta', `patente` = '$patente', `control2` = '$control2' WHERE `hoja4`.`id` = '$id';";
+$actualizar = "UPDATE `hoja4` SET `numero` = '$numero', `R_social` = '$razon', `C_inicial` = '$control', `firma` = '$firma', `rubros` = '$rubros', `fecha` = '$fecha', `acta` = '$acta', `patente` = '$patente', `control2` = '$control2' WHERE `hoja4`.`id` = '$id';";
 $resultado = mysqli_query($conexion, $actualizar);
 if($resultado){
     header("location:../habilitaciones.php?DATO=correcto");

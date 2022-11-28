@@ -6,9 +6,11 @@ if($usuario==='Tomas'){
     $id = $_GET['id'];
     $eliminar = "DELETE FROM hoja4 WHERE id='$id'";
     $sql=mysqli_query($conexion, $eliminar);
-    header("location:../habilitaciones.php?INFORMACION=correcto");
+    header("location:../habilitaciones.php?INFORMACION=correcto"); 
+    echo 'Correcto';
 }else{
-    header("location:../habilitaciones.php?INFORMACION=incorrecto");
+    header("location:../habilitaciones.php?INFORMACION=incorrecto"); 
+    echo 'Incorrecto';
 }
 
 

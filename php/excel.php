@@ -16,8 +16,8 @@ echo    '<tr><th>Numero de habilitacion</th><th>Razon social</th><th>Citacion a 
          while($row = mysqli_fetch_array($query)){ 
             echo '<tr>';
             echo '<td>'.$row['numero'].'</td>';
-            echo '<td>'.$row['R.social'].'</td>';
-            echo '<td>'.$row['C.inicial'].'</td>';
+            echo '<td>'.$row['R_social'].'</td>';
+            echo '<td>'.$row['C_inicial'].'</td>';
             echo '<td>'.$row['firma'].'</td>';
             echo '<td>'.$row['rubros'].'</td>';
             echo '<td>'.$row['fecha'].'</td>';

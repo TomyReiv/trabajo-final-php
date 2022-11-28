@@ -1,5 +1,8 @@
+<?php
+  include 'php/sesion.php';
+?>
 
-<div class="modal fade" id="modal_editar<?php echo $row['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,46 +15,31 @@
 
             <div class="modal-body">
                 <div class="container-fluid">
-
-                    <?php
-
-                    include 'php/cn.php';
-                    include 'php/sesion.php';
-                    
-
-                    $id = $row['id'];/* el id se lo damos en habilitaciones.php */
-                    $consulta = "SELECT * FROM hoja4 WHERE id = '$id'";/* igual que en la busqueda pero se usa el numero de id para seleccionar los datos especificos */
-
-                    $resultModal = mysqli_query($conexion, $consulta);
-                    $hab = mysqli_fetch_array($resultModal);
-
-
-                    ?>
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
                                 <form method="POST" action="php/procesar.php">
-                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                    <input hidden id="hab_id" name="id" value="">
                                     <div class="form-group">
                                         <label for="numero">Numero de habilitación</label>
-                                        <input type="text" class="form-control" name="numero" value="<?php echo $hab['numero']; ?>">
+                                        <input id="hab_num" type="text" class="form-control" name="numero" value=" ">
                                     </div>
                                     <div class="form-group">
                                         <label for="razonsocial">Razón social</label>
-                                        <input type="text" class="form-control" name="razonsocial" value=" <?php echo $hab['R_social']; ?>">
+                                        <input id="hab_raz" type="text" class="form-control" name="razonsocial" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="control">Control de frío</label>
-                                        <input type="text" class="form-control" name="control" value="<?php echo $hab['C_inicial']; ?>">
+                                        <input id="hab_control" type="text" class="form-control" name="control" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="firma">Firma</label>
-                                        <input type="text" class="form-control" name="firma" value="<?php echo $hab['firma']; ?>">
+                                        <input id="hab_firma" type="text" class="form-control" name="firma" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="rubro">Rubros</label>
                                         <select class="form-control" name="rubro">
-                                            <option value="<?php echo $hab['rubros']; ?>"><?php echo $hab['rubros']; ?></option>
+                                            <option value="" id="hab_rub"></option>
                                             <option value="Aceite">Aceite</option>
                                             <option value="Articulos de limpieza">Articulos de limpieza</option>
                                             <option value="Bebidas envasadas">Bebidas envasadas</option>
@@ -86,19 +74,19 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="fecha">Fecha de habilitación</label>
-                                        <input type="date" class="form-control" name="fecha" value="<?php echo $hab['fecha']; ?>">
+                                        <input id="hab_fecha" type="date" class="form-control" name="fecha" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="acta">Numero de acta</label>
-                                        <input type="text" class="form-control" name="acta" value="<?php echo $hab['acta']; ?>">
+                                        <input id="hab_acta" type="text" class="form-control" name="acta" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="patente">Patente</label>
-                                        <input type="text" class="form-control" name="patente" value="<?php echo $hab['patente']; ?>">
+                                        <input id="hab_pat" type="text" class="form-control" name="patente" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="control2">Segundo control</label>
-                                        <input type="text" class="form-control" name="control2" value="<?php echo $hab['control2']; ?>">
+                                        <input id="hab_cont" type="text" class="form-control" name="control2" value="">
                                     </div>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                     <button type="submit" class="btn btn-primary">Editar registro</button>

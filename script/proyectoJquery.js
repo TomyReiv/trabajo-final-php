@@ -131,3 +131,11 @@ $(document).ready(function () {
     })
 
 })
+$(document).ready(function () {
+
+    function alerta() {
+        $('.alert').remove();
+    }
+
+    setTimeout(alerta, 3000);
+})
